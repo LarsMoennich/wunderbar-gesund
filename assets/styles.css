@@ -893,10 +893,27 @@ a {
   font: inherit;
 }
 
+.form-check {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-note {
   margin: 0;
   font-size: 0.9rem;
 }
+
+.form-note.is-success {
+  color: #d7f0c2;
+}
+
+.form-note.is-error {
+  color: #ffd0c4;
+}
+
 
 .disclaimer {
   display: grid;

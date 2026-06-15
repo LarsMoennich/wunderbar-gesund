@@ -24,7 +24,7 @@
     <link rel="preload" as="image" href="assets/images/hero-background-clean.png">
     <link rel="preload" as="image" href="assets/images/hero-panel-background.png">
     <link rel="preload" as="image" href="assets/images/logo-full.jpg">
-    <link rel="stylesheet" href="assets/styles.css?v=50">
+    <link rel="stylesheet" href="assets/styles.css?v=51">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -354,13 +354,14 @@
             bist loszulassen. Bist du bereit für Veränderung?
           </p>
         </div>
-        <form class="contact-form">
-          <label>Name <input type="text" name="name" autocomplete="name"></label>
-          <label>E-Mail <input type="email" name="email" autocomplete="email"></label>
+        <form class="contact-form" action="send.php" method="post">
+          <label>Name <input type="text" name="name" autocomplete="name" required></label>
+          <label>E-Mail <input type="email" name="email" autocomplete="email" required></label>
           <label>Telefonnummer <input type="tel" name="phone" autocomplete="tel"></label>
-          <label>Deine Nachricht <textarea name="message" rows="5" placeholder="Bitte beschreibe kurz dein Anliegen und wann du gut erreichbar bist."></textarea></label>
+          <label>Deine Nachricht <textarea name="message" rows="5" placeholder="Bitte beschreibe kurz dein Anliegen und wann du gut erreichbar bist." required></textarea></label>
+          <label class="form-check">Bitte leer lassen <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           <button class="button primary" type="submit">Senden</button>
-          <p class="form-note">Der Prototyp sendet noch keine Nachricht. Für den Livebetrieb braucht dieses Formular eine PHP- oder Formularservice-Anbindung.</p>
+          <p class="form-note" data-form-status>Deine Anfrage wird direkt per E-Mail an mich gesendet.</p>
         </form>
       </section>
 
@@ -386,7 +387,7 @@
       </nav>
     </footer>
 
-    <script src="assets/script.js?v=18"></script>
+    <script src="assets/script.js?v=19"></script>
   </body>
 </html>
 

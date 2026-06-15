@@ -76,10 +76,18 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-document.querySelector(".contact-form")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  alert("Das Formular ist im statischen Prototyp noch nicht angebunden.");
-});
+const formStatus = document.querySelector("[data-form-status]");
+const contactStatus = new URLSearchParams(window.location.search).get("kontakt");
+
+if (formStatus && contactStatus === "ok") {
+  formStatus.textContent = "Danke, deine Nachricht wurde gesendet. Ich melde mich bei dir.";
+  formStatus.classList.add("is-success");
+}
+
+if (formStatus && contactStatus === "error") {
+  formStatus.textContent = "Die Nachricht konnte leider nicht gesendet werden. Bitte schreibe mir direkt an lars@wunderbar-gesund.de.";
+  formStatus.classList.add("is-error");
+}
 
 document.querySelectorAll("[data-accordion] .accordion-trigger").forEach((trigger) => {
   trigger.addEventListener("click", () => {
