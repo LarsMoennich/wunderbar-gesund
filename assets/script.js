@@ -101,8 +101,8 @@ let logoSmall = false;
 let logoTicking = false;
 
 const updateLogoState = () => {
-  const start = 18;
-  const end = 150;
+  const start = 0;
+  const end = window.innerWidth < 540 ? 190 : 230;
   const progress = Math.min(1, Math.max(0, (window.scrollY - start) / (end - start)));
   const startSize = Math.min(250, window.innerWidth * 0.32);
   const endSize = window.innerWidth < 540 ? 74 : 92;
@@ -110,7 +110,7 @@ const updateLogoState = () => {
   document.body.style.setProperty("--logo-progress", progress.toFixed(3));
   document.body.style.setProperty("--logo-size", `${logoSize.toFixed(1)}px`);
 
-  const shouldShrink = logoSmall ? window.scrollY > 96 : window.scrollY > 152;
+  const shouldShrink = logoSmall ? window.scrollY > 0 : window.scrollY > 1;
   if (shouldShrink !== logoSmall) {
     logoSmall = shouldShrink;
     document.body.classList.toggle("site-scrolled", logoSmall);
