@@ -23,6 +23,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
+  --logo-progress: 0;
 }
 
 img {
@@ -178,14 +179,27 @@ a {
   position: sticky;
   top: 0;
   z-index: 2;
-  width: min(250px, 32vw);
+  width: var(--logo-size, min(250px, 32vw));
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   padding-top: 0;
-  transform: none;
+  transform: translateY(calc(var(--logo-progress) * 28px));
   transform-origin: top center;
-  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1), transform 320ms cubic-bezier(0.22, 1, 0.36, 1), filter 320ms ease;
+  transition: filter 180ms ease, background 180ms ease, box-shadow 180ms ease;
   will-change: transform, width;
+}
+
+.hero-logo::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  background: rgba(255, 253, 248, calc(var(--logo-progress) * 0.78));
+  border: 1px solid rgba(255, 255, 255, calc(var(--logo-progress) * 0.7));
+  border-radius: 0;
+  box-shadow: 0 18px 46px rgba(31, 49, 29, calc(var(--logo-progress) * 0.18));
+  backdrop-filter: blur(calc(var(--logo-progress) * 14px));
+  opacity: var(--logo-progress);
 }
 
 .hero-logo img {
@@ -196,12 +210,14 @@ a {
 
 .logo-full,
 .logo-symbol,
-.logo-mark-bg {
-  transition: opacity 220ms ease, transform 260ms ease;
+.logo-mark-bg,
+.logo-scroll-symbol {
+  transition: none;
 }
 
 .logo-symbol,
-.logo-mark-bg {
+.logo-mark-bg,
+.logo-scroll-symbol {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -211,15 +227,24 @@ a {
   transform: scale(0.9);
 }
 
+.logo-full {
+  opacity: calc(1 - var(--logo-progress));
+  transform: scale(calc(1 - var(--logo-progress) * 0.18));
+}
+
+.logo-scroll-symbol {
+  opacity: var(--logo-progress);
+  transform: scale(calc(0.74 + var(--logo-progress) * 0.16));
+  filter: drop-shadow(0 8px 18px rgba(31, 49, 29, 0.16));
+}
+
 .site-scrolled .hero-logo {
   position: fixed;
   top: 0;
   left: 50%;
-  width: 104px;
   transform: translateX(-50%);
-  filter: drop-shadow(0 10px 26px rgba(28, 37, 26, 0.24));
-  background: #1f311d;
-  overflow: hidden;
+  filter: none;
+  overflow: visible;
 }
 
 .site-scrolled .logo-full {
@@ -233,8 +258,13 @@ a {
 }
 
 .site-scrolled .logo-mark-bg {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.site-scrolled .logo-scroll-symbol {
   opacity: 1;
-  transform: scale(1);
+  transform: scale(0.9);
 }
 
 .hero-content {
