@@ -183,7 +183,7 @@ a {
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   padding-top: 0;
-  transform: translateY(0);
+  transform: translateY(calc(var(--logo-progress) * 18px));
   transform-origin: top center;
   transition: filter 180ms ease, background 180ms ease, box-shadow 180ms ease;
   will-change: transform, width;
