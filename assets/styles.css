@@ -24,6 +24,7 @@ body {
   background: var(--paper);
   line-height: 1.6;
   --logo-progress: 0;
+  --logo-morph: 0;
 }
 
 img {
@@ -157,7 +158,7 @@ a {
 .hero {
   position: relative;
   min-height: auto;
-  padding: 0 clamp(20px, 3vw, 34px) 32px;
+  padding: clamp(112px, 20vw, 220px) clamp(20px, 3vw, 34px) 32px;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.06) 42%, rgba(255, 255, 255, 0) 100%),
     url("images/hero-background-clean.png") center top / cover no-repeat;
@@ -176,14 +177,15 @@ a {
 }
 
 .hero-logo {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 50%;
   z-index: 2;
   width: var(--logo-size, min(250px, 32vw));
   aspect-ratio: 1 / 1;
   margin: 0 auto;
   padding-top: 0;
-  transform: translateY(calc(var(--logo-progress) * 18px));
+  transform: translateX(-50%);
   transform-origin: top center;
   transition: filter 180ms ease, background 180ms ease, box-shadow 180ms ease;
   will-change: transform, width;
@@ -194,12 +196,12 @@ a {
   position: absolute;
   inset: -8px;
   z-index: -1;
-  background: rgba(255, 253, 248, calc(var(--logo-progress) * 0.5));
-  border: 1px solid rgba(255, 255, 255, calc(var(--logo-progress) * 0.42));
+  background: rgba(255, 253, 248, calc(var(--logo-morph) * 0.5));
+  border: 1px solid rgba(255, 255, 255, calc(var(--logo-morph) * 0.42));
   border-radius: 0;
-  box-shadow: 0 18px 46px rgba(31, 49, 29, calc(var(--logo-progress) * 0.18));
-  backdrop-filter: blur(calc(var(--logo-progress) * 14px));
-  opacity: var(--logo-progress);
+  box-shadow: 0 18px 46px rgba(31, 49, 29, calc(var(--logo-morph) * 0.18));
+  backdrop-filter: blur(calc(var(--logo-morph) * 14px));
+  opacity: var(--logo-morph);
 }
 
 .hero-logo img {
@@ -228,43 +230,14 @@ a {
 }
 
 .logo-full {
-  opacity: calc(1 - var(--logo-progress));
-  transform: scale(calc(1 - var(--logo-progress) * 0.18));
+  opacity: calc(1 - var(--logo-morph));
+  transform: scale(calc(1 - var(--logo-morph) * 0.18));
 }
 
 .logo-scroll-symbol {
-  opacity: var(--logo-progress);
-  transform: scale(calc(0.74 + var(--logo-progress) * 0.16));
+  opacity: var(--logo-morph);
+  transform: scale(calc(0.74 + var(--logo-morph) * 0.16));
   filter: drop-shadow(0 8px 18px rgba(31, 49, 29, 0.16));
-}
-
-.site-scrolled .hero-logo {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 18px);
-  filter: none;
-  overflow: visible;
-}
-
-.site-scrolled .logo-full {
-  opacity: calc(1 - var(--logo-progress));
-  transform: scale(calc(1 - var(--logo-progress) * 0.18));
-}
-
-.site-scrolled .logo-symbol {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.site-scrolled .logo-mark-bg {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.site-scrolled .logo-scroll-symbol {
-  opacity: var(--logo-progress);
-  transform: scale(calc(0.74 + var(--logo-progress) * 0.16));
 }
 
 .hero-content {
@@ -1135,7 +1108,7 @@ a {
 
   .hero {
     min-height: auto;
-    padding-top: 0;
+    padding-top: clamp(112px, 34vw, 150px);
     background:
       linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(255, 255, 255, 0.12) 100%),
       url("images/hero-background-clean.png") center top / auto 520px no-repeat;
@@ -1207,6 +1180,7 @@ a {
 
 @media (min-width: 821px) and (max-width: 1180px) {
   .hero {
+    padding-top: clamp(150px, 23vw, 220px);
     background:
       linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.06) 42%, rgba(255, 255, 255, 0) 100%),
       url("images/hero-background-clean.png") center top / 100% auto no-repeat;

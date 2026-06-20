@@ -40,10 +40,6 @@ const getMenuScrollOffset = (hash) => {
 const scrollToHashContent = (hash, behavior = "smooth") => {
   const target = getScrollTarget(hash);
   if (!target) return false;
-  if (hash !== "#start") {
-    logoSmall = true;
-    document.body.classList.add("site-scrolled");
-  }
   const top = target.getBoundingClientRect().top + window.scrollY - getMenuScrollOffset(hash);
   window.scrollTo({ top, behavior });
   return true;
@@ -97,25 +93,20 @@ document.querySelectorAll("[data-accordion] .accordion-trigger").forEach((trigge
   });
 });
 
-let logoSmall = false;
 let logoTicking = false;
 
 const updateLogoState = () => {
-  const start = 0;
-  const end = window.innerWidth < 540 ? 190 : 230;
-  const progress = Math.min(1, Math.max(0, (window.scrollY - start) / (end - start)));
+  const end = window.innerWidth < 540 ? 300 : 420;
+  const morphStart = window.innerWidth < 540 ? 76 : 110;
+  const progress = Math.min(1, Math.max(0, window.scrollY / end));
+  const morphRaw = Math.min(1, Math.max(0, (window.scrollY - morphStart) / (end - morphStart)));
+  const morph = morphRaw * morphRaw * (3 - (2 * morphRaw));
   const startSize = Math.min(250, window.innerWidth * 0.32);
   const endSize = window.innerWidth < 540 ? 74 : 92;
   const logoSize = startSize - ((startSize - endSize) * progress);
   document.body.style.setProperty("--logo-progress", progress.toFixed(3));
+  document.body.style.setProperty("--logo-morph", morph.toFixed(3));
   document.body.style.setProperty("--logo-size", `${logoSize.toFixed(1)}px`);
-
-  const fixedStart = end + 80;
-  const shouldShrink = logoSmall ? window.scrollY > end + 36 : window.scrollY > fixedStart;
-  if (shouldShrink !== logoSmall) {
-    logoSmall = shouldShrink;
-    document.body.classList.toggle("site-scrolled", logoSmall);
-  }
   logoTicking = false;
 };
 
