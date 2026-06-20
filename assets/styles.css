@@ -1180,7 +1180,7 @@ a {
 
 @media (min-width: 821px) and (max-width: 1180px) {
   .hero {
-    padding-top: clamp(150px, 23vw, 220px);
+    padding-top: clamp(190px, 25vw, 240px);
     background:
       linear-gradient(90deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.06) 42%, rgba(255, 255, 255, 0) 100%),
       url("images/hero-background-clean.png") center top / 100% auto no-repeat;
@@ -1188,7 +1188,8 @@ a {
   }
 
   .hero-content {
-    margin-top: clamp(-52px, -4vw, -28px);
+    margin-top: clamp(-36px, -3vw, -20px);
+    padding-top: clamp(84px, 9vw, 112px);
   }
 }
 
