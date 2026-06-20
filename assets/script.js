@@ -96,12 +96,13 @@ document.querySelectorAll("[data-accordion] .accordion-trigger").forEach((trigge
 let logoTicking = false;
 
 const updateLogoState = () => {
+  const isFlatMidWidth = window.innerWidth >= 821 && window.innerWidth <= 1180 && window.innerHeight <= 620;
   const end = window.innerWidth < 540 ? 300 : 420;
   const morphStart = window.innerWidth < 540 ? 76 : 110;
   const progress = Math.min(1, Math.max(0, window.scrollY / end));
   const morphRaw = Math.min(1, Math.max(0, (window.scrollY - morphStart) / (end - morphStart)));
   const morph = morphRaw * morphRaw * (3 - (2 * morphRaw));
-  const startSize = Math.min(250, window.innerWidth * 0.32);
+  const startSize = isFlatMidWidth ? Math.min(188, window.innerWidth * 0.22) : Math.min(250, window.innerWidth * 0.32);
   const endSize = window.innerWidth < 540 ? 74 : 92;
   const logoSize = startSize - ((startSize - endSize) * progress);
   document.body.style.setProperty("--logo-progress", progress.toFixed(3));
