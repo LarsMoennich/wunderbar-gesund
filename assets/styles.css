@@ -1189,7 +1189,7 @@ a {
 
   .hero-content {
     margin-top: clamp(-36px, -3vw, -20px);
-    padding-top: clamp(84px, 9vw, 112px);
+    padding-top: clamp(136px, 15vw, 168px);
   }
 }
 
