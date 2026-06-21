@@ -852,6 +852,12 @@ a {
   color: var(--muted);
 }
 
+.price:not(.price-text) span {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
 .price-text {
   max-width: 360px;
   font-size: clamp(1.55rem, 2.7vw, 2.05rem);
