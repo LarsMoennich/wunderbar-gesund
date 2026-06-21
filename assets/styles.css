@@ -970,6 +970,117 @@ a {
   justify-content: flex-end;
 }
 
+.cookie-consent {
+  position: fixed;
+  inset: auto clamp(14px, 3vw, 34px) clamp(14px, 3vw, 34px);
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.cookie-consent[hidden] {
+  display: none;
+}
+
+.cookie-consent-card {
+  width: min(1040px, 100%);
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.8fr);
+  gap: 22px;
+  align-items: end;
+  padding: clamp(20px, 3vw, 30px);
+  color: #233b31;
+  background:
+    linear-gradient(135deg, rgba(255, 253, 248, 0.94), rgba(239, 246, 232, 0.9)),
+    rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(82, 104, 60, 0.18);
+  box-shadow: 0 24px 80px rgba(31, 49, 29, 0.22);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+}
+
+.cookie-consent-copy h2 {
+  margin: 4px 0 10px;
+  font-size: clamp(1.55rem, 2vw, 2.25rem);
+  line-height: 1.05;
+}
+
+.cookie-consent-copy p {
+  max-width: 650px;
+  margin: 0;
+  color: #5f665b;
+}
+
+.cookie-consent-copy a {
+  display: inline-flex;
+  margin-top: 14px;
+  color: #52683c;
+  font-weight: 800;
+  text-underline-offset: 4px;
+}
+
+.cookie-kicker {
+  margin: 0;
+  color: #52683c;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cookie-options {
+  display: grid;
+  gap: 10px;
+}
+
+.cookie-option {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 13px 14px;
+  border: 1px solid rgba(82, 104, 60, 0.18);
+  background: rgba(255, 253, 248, 0.72);
+}
+
+.cookie-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green-dark);
+  margin-top: 3px;
+}
+
+.cookie-option strong {
+  display: block;
+  color: #2f4731;
+}
+
+.cookie-option small {
+  display: block;
+  color: #69635c;
+  font-size: 0.84rem;
+}
+
+.cookie-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cookie-actions .button {
+  min-height: 44px;
+  border: 1px solid var(--green);
+  cursor: pointer;
+}
+
+.cookie-actions .button-secondary {
+  color: var(--green-dark);
+  background: rgba(255, 253, 248, 0.72);
+}
+
 .legal-page {
   color: #34485d;
   background:
@@ -1175,6 +1286,25 @@ a {
 
   .site-footer nav {
     justify-content: center;
+  }
+
+  .cookie-consent {
+    inset: auto 12px 12px;
+  }
+
+  .cookie-consent-card {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-height: calc(100vh - 24px);
+    overflow: auto;
+  }
+
+  .cookie-actions {
+    justify-content: stretch;
+  }
+
+  .cookie-actions .button {
+    flex: 1 1 100%;
   }
 }
 

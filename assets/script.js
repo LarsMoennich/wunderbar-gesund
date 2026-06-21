@@ -96,6 +96,10 @@ document.querySelectorAll("[data-accordion] .accordion-trigger").forEach((trigge
 let logoTicking = false;
 
 const updateLogoState = () => {
+  if (!document.querySelector(".hero-logo")) {
+    logoTicking = false;
+    return;
+  }
   const isFlatMidWidth = window.innerWidth >= 821 && window.innerWidth <= 1180 && window.innerHeight <= 620;
   const end = window.innerWidth < 540 ? 300 : 420;
   const morphStart = window.innerWidth < 540 ? 76 : 110;
@@ -123,6 +127,42 @@ window.addEventListener("hashchange", () => {
   scrollToHashContent(window.location.hash);
   requestLogoStateUpdate();
 }, { passive: true });
+
+const cookieConsent = document.querySelector("[data-cookie-consent]");
+const cookieOptional = document.querySelector("[data-cookie-optional]");
+const cookieAccept = document.querySelector("[data-cookie-accept]");
+const cookieDecline = document.querySelector("[data-cookie-decline]");
+const cookieSave = document.querySelector("[data-cookie-save]");
+const cookieStorageKey = "wunderbarGesundCookieConsent";
+
+const getCookieConsent = () => {
+  try {
+    return localStorage.getItem(cookieStorageKey) || document.cookie.includes(`${cookieStorageKey}=`);
+  } catch {
+    return document.cookie.includes(`${cookieStorageKey}=`);
+  }
+};
+
+const saveCookieConsent = (optionalAccepted) => {
+  try {
+    localStorage.setItem(cookieStorageKey, JSON.stringify({
+      necessary: true,
+      optional: Boolean(optionalAccepted),
+      savedAt: new Date().toISOString(),
+    }));
+  } catch {
+    document.cookie = `${cookieStorageKey}=necessary; max-age=15552000; path=/; SameSite=Lax`;
+  }
+  cookieConsent?.setAttribute("hidden", "");
+};
+
+if (cookieConsent && !getCookieConsent()) {
+  cookieConsent.removeAttribute("hidden");
+}
+
+cookieAccept?.addEventListener("click", () => saveCookieConsent(true));
+cookieDecline?.addEventListener("click", () => saveCookieConsent(false));
+cookieSave?.addEventListener("click", () => saveCookieConsent(cookieOptional?.checked));
 
 if (window.location.hash) {
   window.setTimeout(() => {

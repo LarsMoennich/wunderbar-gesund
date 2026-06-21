@@ -6,7 +6,7 @@
     <title>Impressum | wunderbar gesund</title>
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="Impressum von wunderbar gesund, Lars Mazuga-Mönnich.">
-    <link rel="stylesheet" href="assets/styles.css?v=36">
+    <link rel="stylesheet" href="assets/styles.css?v=64">
   </head>
   <body class="legal-page">
     <header class="legal-header">
@@ -111,5 +111,42 @@
         <a href="datenschutz.html">Datenschutz</a>
       </nav>
     </footer>
+
+    <div class="cookie-consent" data-cookie-consent hidden>
+      <div class="cookie-consent-card" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+        <div class="cookie-consent-copy">
+          <p class="cookie-kicker">Datenschutz-Einstellungen</p>
+          <h2 id="cookie-title">Cookies bewusst einsetzen</h2>
+          <p id="cookie-description">
+            Diese Website verwendet notwendige Cookies, damit sie technisch zuverlässig funktioniert.
+            Optionale Cookies nutze ich nur mit deiner Zustimmung.
+          </p>
+          <a href="datenschutz.html">Mehr zum Datenschutz</a>
+        </div>
+        <div class="cookie-options" aria-label="Cookie-Auswahl">
+          <label class="cookie-option is-required">
+            <input type="checkbox" checked disabled>
+            <span>
+              <strong>Notwendig</strong>
+              <small>Speichert z. B. deine Cookie-Auswahl.</small>
+            </span>
+          </label>
+          <label class="cookie-option">
+            <input type="checkbox" data-cookie-optional>
+            <span>
+              <strong>Optional</strong>
+              <small>Reserve für Komfort- oder Analysefunktionen.</small>
+            </span>
+          </label>
+        </div>
+        <div class="cookie-actions">
+          <button class="button button-secondary" type="button" data-cookie-decline>Nur notwendige</button>
+          <button class="button button-primary" type="button" data-cookie-save>Auswahl speichern</button>
+          <button class="button button-primary" type="button" data-cookie-accept>Alle akzeptieren</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/script.js?v=26"></script>
   </body>
 </html>
