@@ -871,9 +871,11 @@ a {
 
 .price-meta {
   max-width: 420px;
-  margin: 0 0 16px;
-  color: var(--green-dark);
+  margin: -2px 0 16px;
+  color: var(--muted);
+  font-size: 1rem;
   font-weight: 800;
+  line-height: 1.35;
 }
 
 .price-card li {
