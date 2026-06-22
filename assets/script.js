@@ -1,5 +1,6 @@
 const toggle = document.querySelector(".nav-toggle");
 const nav = document.querySelector("#site-nav");
+const heroLogo = document.querySelector(".hero-logo");
 
 const closeNav = () => {
   nav?.classList.remove("is-open");
@@ -57,6 +58,12 @@ nav?.addEventListener("click", (event) => {
     }
     closeNav();
   }
+});
+
+heroLogo?.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  history.pushState(null, "", "#start");
+  requestLogoStateUpdate();
 });
 
 document.addEventListener("click", (event) => {
