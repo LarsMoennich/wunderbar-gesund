@@ -537,7 +537,8 @@ a {
 .quote-section {
   display: grid;
   min-height: clamp(220px, 26vw, 360px);
-  place-items: center;
+  align-content: center;
+  justify-items: center;
   padding: clamp(48px, 7vw, 92px) clamp(24px, 7vw, 96px);
   background:
     linear-gradient(90deg, rgba(236, 246, 247, 0.88), rgba(236, 246, 247, 0.62)),
@@ -554,6 +555,17 @@ a {
   font-weight: 800;
   line-height: 1.2;
   text-align: center;
+}
+
+.quote-section cite {
+  display: block;
+  margin-top: 18px;
+  color: rgba(52, 72, 93, 0.78);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .balance-section {
