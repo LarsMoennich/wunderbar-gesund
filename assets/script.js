@@ -133,6 +133,8 @@ const cookieOptional = document.querySelector("[data-cookie-optional]");
 const cookieAccept = document.querySelector("[data-cookie-accept]");
 const cookieDecline = document.querySelector("[data-cookie-decline]");
 const cookieSave = document.querySelector("[data-cookie-save]");
+const cookieCollapse = document.querySelector("[data-cookie-collapse]");
+const cookieExpand = document.querySelector("[data-cookie-expand]");
 const cookieStorageKey = "wunderbarGesundCookieConsent";
 
 const getCookieConsent = () => {
@@ -159,6 +161,16 @@ const saveCookieConsent = (optionalAccepted) => {
 if (cookieConsent && !getCookieConsent()) {
   cookieConsent.removeAttribute("hidden");
 }
+
+cookieCollapse?.addEventListener("click", () => {
+  cookieConsent?.classList.add("is-collapsed");
+  cookieExpand?.removeAttribute("hidden");
+});
+
+cookieExpand?.addEventListener("click", () => {
+  cookieConsent?.classList.remove("is-collapsed");
+  cookieExpand.setAttribute("hidden", "");
+});
 
 cookieAccept?.addEventListener("click", () => saveCookieConsent(true));
 cookieDecline?.addEventListener("click", () => saveCookieConsent(false));
